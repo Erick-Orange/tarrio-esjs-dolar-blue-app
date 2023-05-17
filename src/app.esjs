@@ -11,15 +11,17 @@ asincrono funcion obtenerCotizacion() {
   )
 
   const dolarBlue = esperar respuesta.json()
-
   const promedio = Mate.redondearHaciaArriba((dolarBlue.compra + dolarBlue.venta) / 2)
+  const fecha_dolar = dolarBlue.fechaActualizacion.split("-")
+  const time_dolar = fecha_dolar[2].split("T")
+  const infor_fecha = time_dolar[0]+" / "+fecha_dolar[1] +" / "+ fecha_dolar[0] + " Hora: " + time_dolar[1].slice(0, 8);
 
   Terminal.escribir("Cotización del Dolar en Argentina")
 
   Terminal.escribir("Compra: " + signo_dinero + dolarBlue.compra)
   Terminal.escribir("Venta: " + signo_dinero + dolarBlue.venta)
   Terminal.escribir("Promedio: " + signo_dinero + promedio)
-  Terminal.escribir("Fecha de actualización: " + dolarBlue.fechaActualizacion)
+  Terminal.escribir("Fecha de actualización: " + infor_fecha)
 
   Terminal.escribir("Presiona ENTER para volver a consultar")
   esperar Terminal.leerEnter()
